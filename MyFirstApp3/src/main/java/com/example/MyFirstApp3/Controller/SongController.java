@@ -1,11 +1,13 @@
 package com.example.MyFirstApp3.Controller;
 
+import com.example.MyFirstApp3.Entity.Band;
 import com.example.MyFirstApp3.Entity.Song;
 import com.example.MyFirstApp3.Service.SongService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,9 +38,9 @@ public class SongController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Song> updateSong(@RequestBody Song song){
+    public List<Song> updateSong(@RequestBody Song song){
         Song updateSong = songService.updateSong(song);
-        return new ResponseEntity<>(updateSong, HttpStatus.OK);
+        return new ArrayList<>( );
     }
 
     @DeleteMapping("/{id}")
@@ -46,4 +48,11 @@ public class SongController {
         songService.deleteSong(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    /*@DeleteMapping
+    public String deleteSong(@PathVariable int id){
+        Song song = songService.findSongById(id);
+        songService.deleteSong(id);
+        return "Song" + id + "was deleted";
+    }*/
 }

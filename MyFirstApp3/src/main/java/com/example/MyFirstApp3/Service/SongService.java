@@ -1,13 +1,16 @@
 package com.example.MyFirstApp3.Service;
 
+import com.example.MyFirstApp3.Entity.Band;
 import com.example.MyFirstApp3.Entity.Song;
+import com.example.MyFirstApp3.Entity.Style;
+import com.example.MyFirstApp3.Repository.BandRepository;
 import com.example.MyFirstApp3.Repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
+
 
 @Service
 public class SongService implements SongT {
@@ -16,10 +19,14 @@ public class SongService implements SongT {
 
 
 
+
     @Autowired
     public SongService(SongRepository songRepository){
         this.songRepository = songRepository;
+
     }
+
+
 
 
     @Override
@@ -46,4 +53,6 @@ public class SongService implements SongT {
     public void deleteSong(Integer id){
         songRepository.deleteById(id);
     }
+
+
 }
